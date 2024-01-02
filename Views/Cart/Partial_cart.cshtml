@@ -1,0 +1,129 @@
+﻿@model IEnumerable<WebAppBanHangOnlineNhomNBTPQ.Models.ShoppingCartItem>
+@{
+    Layout = null;
+}
+
+<div class="cart-content-left" style="overflow:auto">
+    <table>
+
+        <tr>
+            <th style="width :40px; ">
+
+            </th>
+            <th>Product</th>
+            <th>Product name</th>
+            <th>Color</th>
+            <th>Size</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Remove</th>
+            <th>Update</th>
+        </tr>
+        @{
+            var total = decimal.Zero;
+        }
+        @if (Model != null && Model.Any())
+        {
+
+            foreach (var item in Model)
+            {
+                total += item.ProductTotalprice;
+                <tr id="tr_@item.Productid" class="product_remove">
+                    <td>
+                        <input type="checkbox" class="checkbox" data-id="@item.Productid">
+                    </td>
+                    <td><img src="~/images/@item.ProductImage" alt=""></td>
+                    <td><a href="/Home/Details/@item.Productid"> <p style="word-break: break-all;">@item.Productname</p></a></td>
+                    <td><p style="word-break: break-all;">@item.ProductColor</p></td>
+                    <td><p>@item.ProductSize</p></td>
+                    <td><input type="number" name="" id="Quantity_@item.Productid" value="@item.ProductQuantity" min="1" style="width: 34px;"></td>
+                    <td><p>@item.ProductPrice$</p></td>
+                    <td><p>@item.ProductTotalprice$</p></td>
+                    <td><a href="#" data-id="@item.Productid" class="btnDelete btn btn-sm btn-danger">Delete</a></td>
+                    <td><a href="#" data-id="@item.Productid" class="btnUpdate btn btn-sm btn-success">Update</a></td>
+
+                </tr>
+            }
+        }
+
+    </table>
+</div>
+<div class="cart-content-right">
+    <table>
+        <tr>
+            <th colspan="2">TỔNG TIỀN GIỎ HÀNG</th>
+        </tr>
+        <TR>
+            <td>Tổng sản phẩm</td>
+            @if(Model != null && Model.Any()) { <td>@Model.Count()</td>}else{<td>0</td>}
+            
+        </TR>
+        <tr>
+            <td>TỔNG TIỀN HÀNG</td>
+            <td><p>@total $</p></td>
+        </tr>
+        <tr>
+            <td>Tạm tính</td>
+            <td><p style="color: black; font-weight: bold;">@total$</p></td>
+        </tr>
+    </table>
+    <div class="cart-content-right-text">
+        <p>Bạn được miễn phí ship với đơn hàng hơn 1000$</p>
+        @{
+            var freeship = 1000 - total;
+        }
+        @if (freeship > 0)
+        {
+            <p style="color: red; font-weight: bold;">Mua thêm <span style="font-size: 18px;">@freeship$</span> để được miễn ship</p>
+        }
+    </div>
+    <div class="cart-content-right-button">
+        <button class="btnRemoveAll">Remove All</button>
+        <button id="btnRemoveSelected">Remove Selected</button>
+        <br>
+        <button style="margin-top:20px">THANH TOÁN</button>
+    </div>
+
+    <div class="cart-content-right-LOGIN">
+        <br>
+        <p><b>TÀI KHOẢN HIGHLIGHT</b></p>
+        <p>Hãy <a href="">Đăng nhập</a> tài khoản của bạn khi thanh toán</p>
+    </div>
+</div>
+<style>
+    .cart-content-left {
+        overflow: auto;
+        max-height: 450px; /* Hoặc kích thước phù hợp với thiết kế của bạn */
+        width: 100%; /* Hoặc kích thước cụ thể */
+    }
+
+
+    .center {
+        text-align: center;
+    }
+
+    .pagination {
+        display: inline-block;
+    }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+        }
+
+            .pagination a.active {
+                background-color: #4CAF50;
+                color: white;
+                border: 1px solid #4CAF50;
+            }
+
+            .pagination a:hover:not(.active) {
+                background-color: #ddd;
+            }
+</style>

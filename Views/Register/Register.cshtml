@@ -1,0 +1,531 @@
+﻿@model WebAppBanHangOnlineNhomNBTPQ.tbKHACHHANG
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Colo Shop</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Colo Shop Template" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css"
+          href="/styles/bootstrap4/bootstrap.min.css" />
+    <link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css"
+          rel="stylesheet" type="text/css" />
+    <link href="/plugins/themify-icons/themify-icons.css" rel="stylesheet"
+          type="text/css" />
+    <link rel="stylesheet" type="text/css"
+          href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css" />
+    <link rel="stylesheet" type="text/css"
+          href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" />
+    <link rel="stylesheet" type="text/css"
+          href="/plugins/OwlCarousel2-2.2.1/animate.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/main_styles.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/responsive.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/cart.css" />
+    <style>
+        /* Định dạng cho thẻ div chứa thông báo lỗi*/
+        .container-register {
+            margin: 100px 0px;
+        }
+
+        .container-blog {
+            margin-top: 200px;
+        }
+
+        #error-message {
+            display: none; /* ban đầu ẩn div */
+            background-color: #f2dede; /* màu nền */
+            color: #a94442; /* màu chữ */
+            padding: 15px; /* khoảng cách giữa nội dung và lề */
+            margin-bottom: 20px; /* khoảng cách giữa div và phần tử phía dưới */
+            border: 1px solid #ebccd1; /* đường viền */
+            border-radius: 4px; /* bo tròn các góc */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="super_container">
+        <!-- Header -->
+
+        <header class="header trans_300">
+            <!-- Top Navigation -->
+
+            <div class="top_nav">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="top_nav_left">
+                                free shipping on all u.s orders
+                                over $50
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <div class="top_nav_right">
+                                <ul class="top_nav_menu">
+                                    <!-- Currency / Language / My Account -->
+
+                                    <li class="currency">
+                                        <a href="#">
+                                            usd <i class="fa fa-angle-down"></i>
+                                        </a>
+                                        <ul class="currency_selection">
+                                            <li><a href="#">cad</a></li>
+                                            <li><a href="#">aud</a></li>
+                                            <li><a href="#">eur</a></li>
+                                            <li><a href="#">gbp</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="language">
+                                        <a href="#">
+                                            English <i class="fa fa-angle-down"></i>
+                                        </a>
+                                        <ul class="language_selection">
+                                            <li><a href="#">French</a></li>
+                                            <li><a href="#">Italian</a></li>
+                                            <li><a href="#">German</a></li>
+                                            <li><a href="#">Spanish</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="account">
+                                        <a href="#">
+                                            My Account <i class="fa fa-angle-down"></i>
+                                        </a>
+                                        <ul class="account_selection">
+                                            <li>
+                                                <a href="signin.jsp">
+                                                    <i class="fa fa-sign-in"
+                                                       aria-hidden="true"></i>Sign In
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="register.jsp">
+                                                    <i class="fa fa-user-plus" aria-hidden="true"></i>Register
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Navigation -->
+
+            <div class="main_nav_container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-right">
+                            <div class="logo_container">
+                                <a href="IndexController">High<span>Light</span></a>
+                            </div>
+                            <nav class="navbar">
+                                <ul class="navbar_menu">
+                                    <li><a href="IndexController">home</a></li>
+                                    <li><a href="#">shop</a></li>
+                                    <li><a href="#">promotion</a></li>
+                                    <li><a href="#">pages</a></li>
+                                    <li><a href="#">blog</a></li>
+                                    <li><a href="contact.html">contact</a></li>
+                                </ul>
+                                <ul class="navbar_user">
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-search"
+                                               aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-user"
+                                               aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="checkout">
+                                        <a href="#">
+                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span id="checkout_items" class="checkout_items">2</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="hamburger_container">
+                                    <i class="fa fa-bars" aria-hidden="true"></i>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="fs_menu_overlay"></div>
+        <div class="hamburger_menu">
+            <div class="hamburger_close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div class="hamburger_menu_content text-right">
+                <ul class="menu_top_nav">
+                    <li class="menu_item has-children">
+                        <a href="#">
+                            usd <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="menu_selection">
+                            <li><a href="#">cad</a></li>
+                            <li><a href="#">aud</a></li>
+                            <li><a href="#">eur</a></li>
+                            <li><a href="#">gbp</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu_item has-children">
+                        <a href="#">
+                            English <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="menu_selection">
+                            <li><a href="#">French</a></li>
+                            <li><a href="#">Italian</a></li>
+                            <li><a href="#">German</a></li>
+                            <li><a href="#">Spanish</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu_item has-children">
+                        <a href="#">
+                            My Account
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="menu_selection">
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-sign-in"
+                                       aria-hidden="true"></i>Sign In
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-user-plus"
+                                       aria-hidden="true"></i>Register
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu_item"><a href="#">home</a></li>
+                    <li class="menu_item"><a href="#">shop</a></li>
+                    <li class="menu_item"><a href="#">promotion</a></li>
+                    <li class="menu_item"><a href="#">pages</a></li>
+                    <li class="menu_item"><a href="#">blog</a></li>
+                    <li class="menu_item"><a href="#">contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slider -->
+        <!-- Register -->
+        @using (Html.BeginForm("Register_Account", "Register", FormMethod.Post, new { id = "form_user" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="container-register">
+
+                <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+                    <div class="container h-100" style="height: 100px">
+                        <div class="row d-flex justify-content-center align-items-center h-100"
+                             style="display: flex; justify-content: center; align-items: center; height: 100">
+                            <div class="col-lg-12 col-xl-11">
+                                <div class="card text-black" style="border-radius: 25px">
+                                    <div class="card-body p-md-5" style="background-color: #eee">
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                                                    Sign
+                                                    up
+                                                </p>
+
+                                                <!-- Thêm thẻ div để chứa thông báo lỗi -->
+                                                <!-- Hiển thị thông báo lỗi nếu có -->
+                                                @if (ViewBag.ErrorMessageRegister != null)
+                                                {
+                                                    <div id="error-message" style="display: block;">
+                                                        @ViewBag.ErrorMessageRegister
+                                                    </div>
+                                                }
+                                                <div id="error-message" style="display: none;">
+                                                    <!-- Thông báo lỗi sẽ được hiển thị ở đây -->
+                                                </div>
+
+                                                <div class="d-flex flex-row align-items-center mb-4">
+                                                    <div class="form-outline flex-fill mb-0">
+                                                        <label class="form-label" for="form3Example1c">
+                                                            Your
+                                                            Name
+                                                        </label> @Html.TextBoxFor(m => m.TAIKHOAN, new { @class = "form-control", @id = "taikhoan" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-flex flex-row align-items-center mb-4">
+                                                    <div class="form-outline flex-fill mb-0">
+                                                        <label class="form-label" for="form3Example3c">
+                                                            Your
+                                                            Email
+                                                        </label>
+                                                        @Html.TextBoxFor(m => m.EMAIL, new { @class = "form-control", type = "email", @id = "email" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-flex flex-row align-items-center mb-4">
+                                                    <div class="form-outline flex-fill mb-0">
+                                                        <label class="form-label" for="form3Example4c">Password</label>
+
+                                                        @Html.TextBoxFor(m => m.MATKHAU, new { @class = "form-control", type = "password", @id = "matkhau" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-flex flex-row align-items-center mb-4">
+                                                    <div class="form-outline flex-fill mb-0">
+                                                        <label class="form-label" for="form3Example4cd">
+                                                            Repeat
+                                                            your password
+                                                        </label>
+                                                        <input type="password"
+                                                               name="confirmPassword" id="confirmMatKhau"
+                                                               class="form-control" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-check d-flex justify-content-center mb-5">
+                                                    <input class="form-check-input me-2" type="checkbox"
+                                                           name="agree" value="true" id="agree" /> <label class="form-check-label" for="form2Example3" style="padding-left: 0px">
+                                                        I
+                                                        agree all statements in <a href="#!">Terms of service</a>
+                                                    </label>
+                                                </div>
+
+                                                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                                    <button type="submit" value="Register"
+                                                            class="btn btn-primary btn-lg signupbtn">
+                                                        Register
+                                                    </button>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                                                     class="img-fluid" alt="Sample image" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function () {
+                var form = document.getElementById('form_user');
+                var errorMessageDiv = document.getElementById('error-message');
+
+                form.addEventListener('submit', function (event) {
+                    var taikhoan = document.getElementById('taikhoan').value;
+                    var email = document.getElementById('email').value;
+                    var matkhau = document.getElementById('matkhau').value;
+                    var confirmMatKhau = document.getElementById('confirmMatKhau').value;
+                    var agreeCheckbox = document.getElementById('agree');
+                    var errorMessages = [];
+
+                    if (!taikhoan || !email || !matkhau || !confirmMatKhau) {
+                        errorMessages.push("Please fill in the information.");
+                    } else {
+                        if (!agreeCheckbox.checked) {
+                            errorMessages.push("Please agree to the terms and conditions.");
+                        }
+
+                        if (matkhau !== confirmMatKhau) {
+                            errorMessages.push("The re-entered password does not match.");
+                        }
+                    }
+                   
+
+                    if (errorMessages.length > 0) {
+                        errorMessageDiv.innerHTML = errorMessages.join('<br>');
+                        errorMessageDiv.style.display = 'block';
+                        event.preventDefault();
+                    } else {
+                        errorMessageDiv.style.display = 'none';
+                    }
+                });
+            });
+        </script>
+        <style>
+            #error-message {
+                color: red;
+                background-color: #ffdada;
+                padding: 10px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+        </style>
+
+        <div class="container-blog">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="section_title">
+                        <h2>Latest Blogs</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row blogs_container">
+                <div class="col-lg-4 blog_item_col">
+                    <div class="blog_item">
+                        <div class="blog_background"
+                             style="background-image: url(images/blog_1.jpg)"></div>
+                        <div class="blog_content d-flex flex-column align-items-center justify-content-center text-center">
+                            <h4 class="blog_title">
+                                Here are the trends I see coming this
+                                fall
+                            </h4>
+                            <span class="blog_meta">by admin | dec 01, 2017</span> <a class="blog_more" href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 blog_item_col">
+                    <div class="blog_item">
+                        <div class="blog_background"
+                             style="background-image: url(images/blog_2.jpg)"></div>
+                        <div class="blog_content d-flex flex-column align-items-center justify-content-center text-center">
+                            <h4 class="blog_title">
+                                Here are the trends I see coming this
+                                fall
+                            </h4>
+                            <span class="blog_meta">by admin | dec 01, 2017</span> <a class="blog_more" href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 blog_item_col">
+                    <div class="blog_item">
+                        <div class="blog_background"
+                             style="background-image: url(images/blog_3.jpg)"></div>
+                        <div class="blog_content d-flex flex-column align-items-center justify-content-center text-center">
+                            <h4 class="blog_title">
+                                Here are the trends I see coming this
+                                fall
+                            </h4>
+                            <span class="blog_meta">by admin | dec 01, 2017</span> <a class="blog_more" href="#">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Newsletter -->
+
+    <div class="newsletter">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="newsletter_text d-flex flex-column justify-content-center align-items-lg-start align-items-md-center text-center">
+                        <h4>Newsletter</h4>
+                        <p>
+                            Subscribe to our newsletter and get 20% off your first
+                            purchase
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <form action="post">
+                        <div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-lg-end justify-content-center">
+                            <input id="newsletter_email" type="email"
+                                   placeholder="Your email" required="required"
+                                   data-error="Valid email is required." />
+                            <button id="newsletter_submit" type="submit"
+                                    class="newsletter_submit_btn trans_300" value="Submit">
+                                subscribe
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center">
+                        <ul class="footer_nav">
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="contact.html">Contact us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-facebook"
+                                       aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-twitter"
+                                       aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-instagram"
+                                       aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-skype"
+                                       aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-pinterest"
+                                       aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer_nav_container">
+                        <div class="cr">
+                            ©2018 All Rights Reserverd. Made with <i class="fa fa-heart-o"
+                                                                     aria-hidden="true"></i> by <a href="#">Colorlib</a> &amp;
+                            distributed by <a href="https://themewagon.com">ThemeWagon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/styles/bootstrap4/popper.js"></script>
+    <script src="/styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="/plugins/Isotope/isotope.pkgd.min.js"></script>
+    <script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="/plugins/easing/easing.js"></script>
+    <script src="/js/custom.js"></script>
+</body>
+</html>
